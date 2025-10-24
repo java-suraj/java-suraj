@@ -74,7 +74,7 @@ Senior Java Spring Boot Developer with **4+ years** of experience in enterprise-
 
 ## 🎯 Featured Projects
 
-**🏛️ Compass** - Modernized legacy SBA system to microservices | Java 21, Spring Boot 3.x, OpenSearch, Multi-level approval workflow
+**🏛️ Finincial Application** - Modernized legacy system to microservices | Java 21, Spring Boot 3.x, OpenSearch, Multi-level approval workflow
 
 **📦 Order Processing System** - Fault-tolerant microservices with Kafka, Resilience4j, AWS SQS/SNS | 99.9% reliability
 
