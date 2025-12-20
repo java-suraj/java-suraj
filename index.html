@@ -123,7 +123,7 @@
         width: 100%;
       }
 
-      /* Hero Section - UPDATED */
+      /* Hero Section */
       .hero {
         min-height: 100vh;
         display: flex;
@@ -135,14 +135,16 @@
         max-width: 1400px;
         margin: 0 auto;
         width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 4rem;
       }
 
       .hero-content {
-        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .hero-text {
         max-width: 700px;
       }
 
@@ -294,26 +296,29 @@
         background: rgba(59, 130, 246, 0.1);
       }
 
-      /* Hero Image - UPDATED */
+      /* Hero Image */
       .hero-image {
-        flex: 0 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         animation: fadeIn 0.8s ease 1s backwards;
       }
 
       .hero-image img {
-        width: 360px;
+        width: 100%;
+        max-width: 360px;
         height: 360px;
         object-fit: cover;
         border-radius: 50%;
-        border: 3px solid rgba(59, 130, 246, 0.4);
+        border: 4px solid rgba(59, 130, 246, 0.4);
         box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
         transition: all 0.3s ease;
-        margin-right: 70px;
       }
 
       .hero-image img:hover {
-        transform: translateY(-5px);
+        transform: translateY(-5px) scale(1.02);
         box-shadow: 0 40px 100px rgba(59, 130, 246, 0.3);
+        border-color: rgba(59, 130, 246, 0.6);
       }
 
       /* Section Styles */
@@ -674,27 +679,37 @@
         transform: translateY(0);
       }
 
-      /* Responsive */
+      /* Responsive Design */
       @media (max-width: 1200px) {
         .hero h1 {
           font-size: 3.5rem;
         }
 
+        .hero-content {
+          grid-template-columns: 1fr 350px;
+          gap: 3rem;
+        }
+
         .hero-image img {
-          width: 320px;
+          max-width: 320px;
           height: 320px;
         }
       }
 
       @media (max-width: 992px) {
-        .hero-container {
-          flex-direction: column;
-          text-align: center;
-          gap: 3rem;
+        .hero h1 {
+          font-size: 3rem;
         }
 
         .hero-content {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+
+        .hero-text {
           max-width: 100%;
+          text-align: center;
+          order: 2;
         }
 
         .hero-stats {
@@ -706,29 +721,41 @@
           flex-wrap: wrap;
         }
 
+        .stat {
+          text-align: center;
+        }
+
+        .hero-image {
+          order: 1;
+        }
+
         .hero-image img {
-          width: 300px;
+          max-width: 300px;
           height: 300px;
+          margin: 0 auto;
         }
       }
 
       @media (max-width: 768px) {
+        .hero {
+          padding: 6rem 5% 3rem;
+        }
+
         .hero h1 {
           font-size: 2.5rem;
+        }
+
+        .hero-description {
+          font-size: 1.125rem;
         }
 
         .hero-stats {
           flex-direction: column;
           gap: 1.5rem;
-          align-items: center;
-        }
-
-        .stat {
-          text-align: center;
         }
 
         .section-title {
-          font-size: 2rem;
+          font-size: 2.5rem;
         }
 
         .nav-menu {
@@ -745,8 +772,38 @@
         }
 
         .hero-image img {
-          width: 280px;
+          max-width: 280px;
           height: 280px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero h1 {
+          font-size: 2.25rem;
+        }
+
+        .hero-description {
+          font-size: 1.1rem;
+        }
+
+        .hero-cta {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .btn {
+          width: 100%;
+          max-width: 300px;
+          text-align: center;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .hero-image img {
+          max-width: 250px;
+          height: 250px;
         }
       }
 
@@ -759,19 +816,49 @@
           font-size: 1rem;
         }
 
-        .hero-cta {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .btn {
-          width: 100%;
-          text-align: center;
+        .hero-stats .stat-number {
+          font-size: 2rem;
         }
 
         .hero-image img {
-          width: 250px;
-          height: 250px;
+          max-width: 220px;
+          height: 220px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .hero-image img {
+          max-width: 200px;
+          height: 200px;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .project-card {
+          min-width: 100%;
+        }
+      }
+
+      /* For very small screens */
+      @media (max-width: 320px) {
+        .hero h1 {
+          font-size: 1.7rem;
+        }
+
+        .hero-image img {
+          max-width: 180px;
+          height: 180px;
+        }
+
+        .btn {
+          padding: 0.8rem 1.5rem;
+          font-size: 0.9rem;
         }
       }
     </style>
@@ -795,62 +882,65 @@
     <section class="hero" id="home">
       <div class="hero-container">
         <div class="hero-content">
-          <div class="hero-badge">
-            <span class="status-indicator"></span>
-            Open to Opportunities
+          <div class="hero-text">
+            <div class="hero-badge">
+              <span class="status-indicator"></span>
+              Open to Opportunities
+            </div>
+
+            <h1>
+              <span class="name">Suraj Kumar Singh</span>
+              <span class="title">Senior Backend Engineer</span>
+            </h1>
+
+            <p class="hero-description">
+              Crafting <strong>enterprise-grade backend systems</strong> with
+              Spring Boot and Java. Specialized in
+              <strong>microservices architecture</strong>, building
+              <strong>high-performance distributed applications</strong> that
+              power financial ecosystems with <strong>99.9% uptime</strong>.
+            </p>
+
+            <div class="hero-stats">
+              <div class="stat">
+                <span class="stat-number">4+</span>
+                <span class="stat-label">Years Experience</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">65%</span>
+                <span class="stat-label">Performance Boost</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">99.9%</span>
+                <span class="stat-label">System Uptime</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Devs Trained</span>
+              </div>
+            </div>
+
+            <div class="hero-cta">
+              <a href="#contact" class="btn btn-primary">Get In Touch</a>
+              <a href="#projects" class="btn btn-secondary">View Projects</a>
+              <a
+                href="https://github.com/java-suraj/java-suraj/raw/main/Suraj_Kumar_Singh_Senior_Java_Developer.docx"
+                class="btn btn-secondary"
+                target="_blank"
+              >
+                Download Resume
+              </a>
+            </div>
           </div>
 
-          <h1>
-            <span class="name">Suraj Kumar Singh</span>
-            <span class="title">Senior Backend Engineer</span>
-          </h1>
-
-          <p class="hero-description">
-            Crafting <strong>enterprise-grade backend systems</strong> with
-            Spring Boot and Java. Specialized in
-            <strong>microservices architecture</strong>, building
-            <strong>high-performance distributed applications</strong> that
-            power financial ecosystems with <strong>99.9% uptime</strong>.
-          </p>
-
-          <div class="hero-stats">
-            <div class="stat">
-              <span class="stat-number">4+</span>
-              <span class="stat-label">Years Experience</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number">65%</span>
-              <span class="stat-label">Performance Boost</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number">99.9%</span>
-              <span class="stat-label">System Uptime</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number">50+</span>
-              <span class="stat-label">Devs Trained</span>
-            </div>
+          <div class="hero-image">
+            <img src="profile.jpg" alt="Suraj Kumar Singh" />
           </div>
-
-          <div class="hero-cta">
-            <a href="#contact" class="btn btn-primary">Get In Touch</a>
-            <a href="#projects" class="btn btn-secondary">View Projects</a>
-            <a
-              href="https://github.com/java-suraj/java-suraj/raw/main/Suraj_Kumar_Singh_Senior_Java_Developer.docx"
-              class="btn btn-secondary"
-              target="_blank"
-            >
-              Download Resume
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-image">
-          <img src="profile.jpg" alt="Suraj Kumar Singh" />
         </div>
       </div>
     </section>
 
+    <!-- Rest of the HTML remains exactly the same... -->
     <!-- Skills Section -->
     <section id="skills">
       <div class="container">
